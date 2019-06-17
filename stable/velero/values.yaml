@@ -59,21 +59,22 @@ metrics:
 ##
 configuration:
   # Cloud provider being used (e.g. aws, azure, gcp).
-  provider:
-
+  provider: azure
   # Parameters for the `default` BackupStorageLocation. See
   # https://velero.io/docs/v1.0.0/api-types/backupstoragelocation/
   backupStorageLocation:
     # Cloud provider where backups should be stored. Usually should
     # match `configuration.provider`. Required.
-    name:
+    name: azure
     # Bucket to store backups in. Required.
     bucket:
     # Prefix within bucket under which to store backups. Optional.
     prefix:
     # Additional provider-specific configuration. See link above
     # for details of required/optional fields for your provider.
-    config: {}
+    config:
+      resourceGroup: rg-cmmn-lunar-station-landing
+      storageAccount: devopuscapitacombackups
     #  region:
     #  s3ForcePathStyle:
     #  s3Url:
@@ -87,10 +88,12 @@ configuration:
   volumeSnapshotLocation:
     # Cloud provider where volume snapshots are being taken. Usually
     # should match `configuration.provider`. Required.,
-    name:
+    name: azure
     # Additional provider-specific configuration. See link above
     # for details of required/optional fields for your provider.
-    config: {}
+    config:
+      resourceGroup: rg-cmmn-lunar-station-landing
+      storageAccount: devopuscapitacombackups
   #    region:
   #    apitimeout:
   #    resourceGroup:
@@ -112,7 +115,11 @@ configuration:
   restoreOnlyMode:
 
   # additional key/value pairs to be used as environment variables such as "AWS_CLUSTER_NAME: 'yourcluster.domain.tld'"
-  extraEnvVars: {}
+  extraEnvVars:
+    AZURE_TENANT_ID: '91e00cb2-b7c0-41b8-aa04-bbd40d719dee'
+    AZURE_CLIENT_ID: '23c2dce4-69b8-4e19-a373-9325e7a7c8d0'
+    AZURE_CLIENT_SECRET: 'cb9e05d6-ffc5-46bc-a2df-8abc24b56977'
+    AZURE_SUBSCRIPTION_ID: 'bb653604-a212-421b-8294-71e708ba879d'
 
 ##
 ## End of backup/snapshot location settings.
@@ -125,12 +132,12 @@ configuration:
 
 # Whether to create the Velero cluster role binding.
 rbac:
-  create: true
+  create: false
 
 # Information about the Kubernetes service account Velero uses.
 serviceAccount:
   server:
-    create: true
+    create: false
     name:
 
 # Info about the secret to be used by the Velero deployment, which
