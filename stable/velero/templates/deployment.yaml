@@ -47,6 +47,8 @@ spec:
             - /velero
           args:
             - server
+            - --log-level
+            - debug
           {{- with .Values.configuration }}
             {{- with .backupSyncPeriod }}
             - --backup-sync-period={{ . }}
