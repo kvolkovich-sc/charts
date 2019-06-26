@@ -67,7 +67,7 @@ configuration:
     # match `configuration.provider`. Required.
     name: azure
     # Bucket to store backups in. Required.
-    bucket:
+    bucket: velero
     # Prefix within bucket under which to store backups. Optional.
     prefix:
     # Additional provider-specific configuration. See link above
@@ -93,7 +93,6 @@ configuration:
     # for details of required/optional fields for your provider.
     config:
       resourceGroup: rg-cmmn-lunar-station-landing
-      storageAccount: devopuscapitacombackups
   #    region:
   #    apitimeout:
   #    resourceGroup:
@@ -116,10 +115,11 @@ configuration:
 
   # additional key/value pairs to be used as environment variables such as "AWS_CLUSTER_NAME: 'yourcluster.domain.tld'"
   extraEnvVars:
-    AZURE_TENANT_ID: '91e00cb2-b7c0-41b8-aa04-bbd40d719dee'
-    AZURE_CLIENT_ID: '23c2dce4-69b8-4e19-a373-9325e7a7c8d0'
-    AZURE_CLIENT_SECRET: 'cb9e05d6-ffc5-46bc-a2df-8abc24b56977'
-    AZURE_SUBSCRIPTION_ID: 'bb653604-a212-421b-8294-71e708ba879d'
+    AZURE_TENANT_ID: 91e00cb2-b7c0-41b8-aa04-bbd40d719dee
+    AZURE_CLIENT_ID: 23c2dce4-69b8-4e19-a373-9325e7a7c8d0
+    AZURE_CLIENT_SECRET: cb9e05d6-ffc5-46bc-a2df-8abc24b56977
+    AZURE_SUBSCRIPTION_ID: bb653604-a212-421b-8294-71e708ba879d
+    AZURE_RESOURCE_GROUP: MC_rg-cmmn-lunar-production_cmmn-lunar-production_westeurope
 
 ##
 ## End of backup/snapshot location settings.
